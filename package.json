@@ -22,7 +22,7 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "semantic-ui-react": "^2.0.0",
-    "formik": "^2.2.0"
+    "formik": "^2.0.0"
   },
   "husky": {
     "hooks": {
