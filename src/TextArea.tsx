@@ -20,7 +20,7 @@ const TextArea = (
     errorConfig,
     ...restProps
   }: TextAreaProps,
-  ref,
+  ref: Ref<_TextArea>,
 ) => {
   const { handleBlur } = useFormikContext();
   const config: FieldHookConfig<TextAreaProps> = {

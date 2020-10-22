@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -29,8 +29,25 @@
       "pre-commit": "tsdx lint"
     }
   },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
+  },
   "name": "formik-semantic-ui-react",
   "author": "Johnny Tsoi",
+  "homepage": "https://github.com/JT501/formik-semantic-ui-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JT501/formik-semantic-ui-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JT501/formik-semantic-ui-react/issues"
+  },
   "module": "dist/formik-semantic-ui-react.esm.js",
   "size-limit": [
     {

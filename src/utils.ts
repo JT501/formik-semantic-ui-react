@@ -1,10 +1,9 @@
 import { defaultErrorConfig, ErrorPromptConfig } from './types';
-import { CheckboxProps } from './Checkbox';
 import { FieldMetaProps } from 'formik';
 
 // Helper to decide error config
-export function getErrorConfig(
-  meta: FieldMetaProps<CheckboxProps>,
+export function getErrorConfig<T>(
+  meta: FieldMetaProps<T>,
   errorPrompt: boolean | undefined,
   errorConfig: ErrorPromptConfig | undefined,
 ) {

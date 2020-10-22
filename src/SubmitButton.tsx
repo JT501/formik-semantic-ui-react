@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonProps, FormButton } from 'semantic-ui-react';
 import { useFormikContext } from 'formik';
-import { isNil } from 'lodash';
 
 interface Props {
   disableLoading?: boolean;
@@ -19,7 +18,7 @@ const SubmitButton = ({
       loading={
         disableLoading
           ? undefined
-          : isNil(loading)
+          : loading === null || loading === undefined
           ? context.isSubmitting
           : loading
       }
