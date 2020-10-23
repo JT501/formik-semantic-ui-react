@@ -17,7 +17,7 @@ jobs:
           node-version: 12
 
       - name: Install deps and build (with cache)
-          uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1
 
       - name: Release
         env:
