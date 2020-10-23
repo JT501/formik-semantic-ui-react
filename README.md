@@ -9,15 +9,15 @@
 Simple wrappers for [`Formik`](https://formik.org/) and [`Semantic UI React`](https://react.semantic-ui.com/).
 
 Features:
-> [`TypeScript`](https://www.typescriptlang.org/) ready !!
+> :lock_with_ink_pen: [`TypeScript`](https://www.typescriptlang.org/) ready !!
 
-> Support `Formik v2` & `Semantic UI React v2`
+> :fire: Support `Formik v2` & `Semantic UI React v2` !!
 
-> Easy to use. Just import form components from `formik-semantic-ui-react` and set their `name` prop. All the components will be connected with `Formik` form !
+> :muscle: Easy to use. Just import form components from `formik-semantic-ui-react` and set their `name` prop. All the components will be connected with `Formik` form !
 
-> Handle `onChange`, loading and form errors for you.
+> :v: Handle `onChange`, loading and form errors for you.
 
-> You can use [Semantic Accessible Labels](https://react.semantic-ui.com/collections/form/#states-field-error) to prompt error !!
+> :sparkles: You can use [Semantic Prompt Labels](https://react.semantic-ui.com/elements/label/#types-prompt) to prompt error by setting `errorPrompt` prop !!
 
 # Example
 ```tsx
