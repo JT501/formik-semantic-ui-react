@@ -20,7 +20,7 @@ Features:
 > :sparkles: You can use [Semantic Prompt Labels](https://react.semantic-ui.com/elements/label/#types-prompt) to prompt error by setting `errorPrompt` prop !!
 
 # Example
-https://codesandbox.io/s/login-form-ftqwx
+[Code Sandbox](https://codesandbox.io/s/login-form-ftqwx/?target=_blank)
 ```tsx
 import React from 'react';
 import { Formik } from 'formik';
