@@ -1,3 +1,4 @@
+
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/Release?label=Release&logo=github&style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/CI?logo=github&style=flat-square)
 ![npm](https://img.shields.io/npm/dw/formik-semantic-ui-react?color=orange&logo=npm&style=flat-square)
@@ -20,7 +21,7 @@ Features:
 > :sparkles: You can use [Semantic Prompt Labels](https://react.semantic-ui.com/elements/label/#types-prompt) to prompt error by setting `errorPrompt` prop !!
 
 # Example
-[Code Sandbox](https://codesandbox.io/s/login-form-ftqwx/?target=_blank)
+[Code Sandbox](https://codesandbox.io/s/login-form-ftqwx)
 ```tsx
 import React from 'react';
 import { Formik } from 'formik';
