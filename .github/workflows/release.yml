@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+
 jobs:
   test:
     name: Test on Node ${{ matrix.node }}
