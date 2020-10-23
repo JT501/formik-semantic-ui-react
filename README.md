@@ -1,8 +1,8 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/Release?label=Release&logo=github&style=for-the-badge)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/CI?logo=github&style=for-the-badge)
-![npm](https://img.shields.io/npm/dw/formik-semantic-ui-react?color=orange&logo=npm&style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/jt501/formik-semantic-ui-react?color=yellow&logo=github&style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/jt501/formik-semantic-ui-react?color=red&style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/Release?label=Release&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/CI?logo=github&style=flat-square)
+![npm](https://img.shields.io/npm/dw/formik-semantic-ui-react?color=orange&logo=npm&style=flat-square)
+![GitHub Repo stars](https://img.shields.io/github/stars/jt501/formik-semantic-ui-react?color=yellow&logo=github&style=flat-square)
+![GitHub](https://img.shields.io/github/license/jt501/formik-semantic-ui-react?color=red&style=flat-square)
 
 # formik-semantic-ui-react
 
@@ -15,7 +15,7 @@ Features:
 
 > :muscle: Easy to use. Just import form components from `formik-semantic-ui-react` and set their `name` prop. All the components will be connected with `Formik` form !
 
-> :v: Handle `onChange`, loading and form errors for you.
+> :v: Handle `onChange`, `onRest`, loading and errors for you.
 
 > :sparkles: You can use [Semantic Prompt Labels](https://react.semantic-ui.com/elements/label/#types-prompt) to prompt error by setting `errorPrompt` prop !!
 
