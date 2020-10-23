@@ -4,9 +4,42 @@ on:
     branches:
       - master
 jobs:
+  test:
+    name: Test on node ${{ matrix.node }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node: [ 10, 12, 14 ]
+        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test --ci --coverage --maxWorkers=2
+
+      - name: Build
+        run: yarn build
+
   release:
-    name: Release
-    runs-on: ubuntu-18.04
+    name: Github release & npm publish
+
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,12 +47,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
-      - name: Release
+      - name: Build
+        if: success()
+        run: npm run build
+
+      - name: Semantic Release
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

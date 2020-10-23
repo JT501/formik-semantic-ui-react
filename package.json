@@ -1,6 +1,16 @@
 {
   "version": "0.1.0",
+  "name": "formik-semantic-ui-react",
+  "author": "Johnny Tsoi",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/JT501/formik-semantic-ui-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JT501/formik-semantic-ui-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JT501/formik-semantic-ui-react/issues"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -20,11 +30,6 @@
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release"
   },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "semantic-ui-react": "^2.0.0",
-    "formik": "^2.0.0"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -40,15 +45,29 @@
     "arrowParens": "avoid",
     "endOfLine": "auto"
   },
-  "name": "formik-semantic-ui-react",
-  "author": "Johnny Tsoi",
-  "homepage": "https://github.com/JT501/formik-semantic-ui-react",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JT501/formik-semantic-ui-react.git"
-  },
-  "bugs": {
-    "url": "https://github.com/JT501/formik-semantic-ui-react/issues"
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md"
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "docs/CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   },
   "module": "dist/formik-semantic-ui-react.esm.js",
   "size-limit": [
@@ -61,7 +80,14 @@
       "limit": "10 KB"
     }
   ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "semantic-ui-react": "^2.0.0",
+    "formik": "^2.0.0"
+  },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@size-limit/preset-small-lib": "^4.6.2",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
@@ -70,12 +96,12 @@
     "prettier": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "semantic-release": "^17.2.1",
     "semantic-ui-react": "^2.0.0",
     "size-limit": "^4.6.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.3",
-    "semantic-release": "^17.2.1"
+    "typescript": "^4.0.3"
   },
   "dependencies": {}
 }
