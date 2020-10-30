@@ -15,7 +15,7 @@ Features:
 
 > :muscle: Easy to use. Just import form components from `formik-semantic-ui-react` and set their `name` prop. All the components will be connected with `Formik` form !
 
-> :v: Handle `onChange`, `onRest`, loading and errors for you.
+> :v: Handle `onChange`, `onReset`, `OnSubmit`, loading and errors for you.
 
 > :sparkles: You can use [Semantic Prompt Labels](https://react.semantic-ui.com/elements/label/#types-prompt) to prompt error by setting `errorPrompt` prop !!
 
