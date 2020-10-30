@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { Checkbox, Form } from '../src';
 import { Formik } from 'formik';
 import userEvent from '@testing-library/user-event';
@@ -41,12 +41,12 @@ describe('Checkbox', () => {
     expect(getByRole('checkbox')).not.toBeChecked();
   });
 
-  it('should validate once per click', function () {
+  it('should validate once per click', async function () {
     const validate = jest.fn();
     const { getByRole } = render(
       <Container checked={false} validate={validate} />,
     );
     userEvent.click(getByRole('checkbox'));
-    expect(validate).toBeCalledTimes(1);
+    await waitFor(() => expect(validate).toBeCalledTimes(1));
   });
 });

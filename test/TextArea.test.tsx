@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { Form, TextArea } from '../src';
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 interface Props {
@@ -34,17 +34,19 @@ describe('Text Area', () => {
     expect(getByText('Text Area')).toBeInTheDocument();
   });
 
-  it('should change value', function () {
+  it('should change value', async function () {
     const { getByTestId } = render(<Container value="" />);
     expect(getByTestId('textarea')).toHaveValue('');
-    userEvent.type(getByTestId('textarea'), 'new value{enter}value');
-    expect(getByTestId('textarea')).toHaveValue('new value\nvalue');
+    await userEvent.type(getByTestId('textarea'), 'new value{enter}value');
+    await waitFor(() =>
+      expect(getByTestId('textarea')).toHaveValue('new value\nvalue'),
+    );
   });
 
-  it('should validate per character typed', function () {
+  it('should validate per character typed', async function () {
     const validate = jest.fn();
     const { getByTestId } = render(<Container value="" validate={validate} />);
-    userEvent.type(getByTestId('textarea'), 'new value');
-    expect(validate).toBeCalledTimes('new value'.length);
+    await userEvent.type(getByTestId('textarea'), 'new value');
+    await waitFor(() => expect(validate).toBeCalledTimes('new value'.length));
   });
 });

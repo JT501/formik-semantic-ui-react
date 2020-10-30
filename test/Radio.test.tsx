@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { Form, Radio } from '../src';
 import React from 'react';
 import { FormGroup } from 'semantic-ui-react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 interface Props {
@@ -48,12 +48,12 @@ describe('Radio', () => {
     expect(getByDisplayValue('C')).toBeChecked();
   });
 
-  it('should validate once per click', function () {
+  it('should validate once per click', async function () {
     const validate = jest.fn();
     const { getByDisplayValue } = render(
       <Container value={'A'} validate={validate} />,
     );
     userEvent.click(getByDisplayValue('B'));
-    expect(validate).toBeCalledTimes(1);
+    await waitFor(() => expect(validate).toBeCalledTimes(1));
   });
 });
