@@ -4,7 +4,9 @@ import React from 'react';
 import { Field } from 'formik';
 
 export const isDevelopmentMode = () =>
-  !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+  !process.env.NODE_ENV ||
+  process.env.NODE_ENV === 'development' ||
+  process.env.NODE_ENV === 'test';
 
 export const FormikDebug = (
   props: React.DetailedHTMLProps<
@@ -13,7 +15,7 @@ export const FormikDebug = (
   >,
 ) =>
   isDevelopmentMode() ? (
-    <pre style={{ padding: 15, ...props }}>
+    <pre style={{ padding: 15, ...props }} data-testid="debug">
       <Field>{({ form }: any) => JSON.stringify(form, null, 2)}</Field>
     </pre>
   ) : null;

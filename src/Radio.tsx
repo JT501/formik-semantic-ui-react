@@ -27,7 +27,7 @@ const Radio = ({
     <FormRadio
       name={name}
       checked={fieldValue === value}
-      value={fieldValue}
+      value={value}
       onChange={(event, data) => {
         setFieldValue(name, value);
         setFieldTouched(name, true, false);

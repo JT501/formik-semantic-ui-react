@@ -1,9 +1,8 @@
-
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/Release?label=Release&logo=github&style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/CI?logo=github&style=flat-square)
-![npm](https://img.shields.io/npm/dw/formik-semantic-ui-react?color=orange&logo=npm&style=flat-square)
-![GitHub Repo stars](https://img.shields.io/github/stars/jt501/formik-semantic-ui-react?color=yellow&logo=github&style=flat-square)
-![GitHub](https://img.shields.io/github/license/jt501/formik-semantic-ui-react?color=red&style=flat-square)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/Release?label=Release&logo=github&style=flat-square)](https://github.com/JT501/formik-semantic-ui-react/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jt501/formik-semantic-ui-react/CI?logo=github&style=flat-square)](https://github.com/JT501/formik-semantic-ui-react/actions)
+[![npm](https://img.shields.io/npm/dw/formik-semantic-ui-react?color=orange&logo=npm&style=flat-square)](https://www.npmjs.com/package/formik-semantic-ui-react)
+[![GitHub Repo stars](https://img.shields.io/github/stars/jt501/formik-semantic-ui-react?color=yellow&logo=github&style=flat-square)](/)
+[![GitHub](https://img.shields.io/github/license/jt501/formik-semantic-ui-react?color=red&style=flat-square)](./LICENSE)
 
 # formik-semantic-ui-react
 
@@ -42,7 +41,7 @@ export const LoginForm = (props: any) => {
   });
 
   return (
-    <Div className={props.className}>
+    <div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -56,6 +55,7 @@ export const LoginForm = (props: any) => {
             placeholder="Email"
             focus
             fluid
+            errorPrompt
           />
           <Input
             name="password"
@@ -66,13 +66,14 @@ export const LoginForm = (props: any) => {
             autoComplete="on"
             focus
             fluid
+            errorPrompt
           />
           <SubmitButton fluid primary>
             Login
           </SubmitButton>
         </Form>
       </Formik>
-    </Div>
+    </div>
   );
 };
 ```
