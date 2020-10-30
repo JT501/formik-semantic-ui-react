@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { Form, Select } from '../src';
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 interface Props {
@@ -60,13 +60,13 @@ describe('Select', () => {
     expect(getByRole('alert')).toHaveTextContent('a');
   });
 
-  it('should validate once per select', function () {
+  it('should validate once per select', async function () {
     const validate = jest.fn();
     const { getByRole } = render(<Container value="" validate={validate} />);
     userEvent.selectOptions(
       getByRole('listbox'),
       getByRole('option', { name: 'c' }),
     );
-    expect(validate).toBeCalledTimes(1);
+    await waitFor(() => expect(validate).toBeCalledTimes(1));
   });
 });

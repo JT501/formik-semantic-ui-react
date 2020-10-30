@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import React from 'react';
 import { Form, Input } from '../src';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 interface Props {
@@ -35,17 +35,17 @@ describe('Input', () => {
     expect(getByText('Testing')).toBeInTheDocument();
   });
 
-  it('should change value', function () {
+  it('should change value', async function () {
     const { getByRole } = render(<Container value="" />);
     expect(getByRole('textbox')).toHaveValue('');
-    userEvent.type(getByRole('textbox'), 'new value');
-    expect(getByRole('textbox')).toHaveValue('new value');
+    await userEvent.type(getByRole('textbox'), 'new value');
+    await waitFor(() => expect(getByRole('textbox')).toHaveValue('new value'));
   });
 
-  it('should validate per character typed', function () {
+  it('should validate per character typed', async function () {
     const validate = jest.fn();
     const { getByRole } = render(<Container value={''} validate={validate} />);
-    userEvent.type(getByRole('textbox'), 'new value');
-    expect(validate).toBeCalledTimes('new value'.length);
+    await userEvent.type(getByRole('textbox'), 'new value');
+    await waitFor(() => expect(validate).toBeCalledTimes('new value'.length));
   });
 });
