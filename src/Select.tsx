@@ -1,51 +1,54 @@
 import React from 'react';
 import { FieldErrorProps, FieldProps } from './types';
-import { FormSelect, SelectProps as _SelectProps } from 'semantic-ui-react';
-import { useField, useFormikContext } from 'formik';
-import { FieldHookConfig } from 'formik/dist/Field';
-import { InputProps } from './Input';
+import {
+  DropdownProps,
+  FormField,
+  Select as _Select,
+  SelectProps as _SelectProps,
+} from 'semantic-ui-react';
+import { FieldProps as FormikFieldProps } from 'formik';
 import { getErrorConfig } from './utils';
+import Field from './Field';
 
 export type SelectProps = FieldProps & _SelectProps & FieldErrorProps;
 
 const Select = ({
   name,
-  value,
+  value: _value,
   options,
   validate,
-  onChange,
+  fast,
+  onChange: _onChange,
   onBlur,
   errorPrompt,
   errorConfig,
   ...restProps
-}: SelectProps) => {
-  const config: FieldHookConfig<InputProps> = {
-    name: name,
-    validate: validate,
-  };
-  const { setFieldValue, setFieldTouched } = useFormikContext();
-  const [field, meta] = useField(config);
-  const fieldValue = (field.value as unknown) as
-    | boolean
-    | number
-    | string
-    | (boolean | number | string)[];
-
-  return (
-    <FormSelect
-      name={name}
-      options={options}
-      value={fieldValue}
-      onChange={(event, data) => {
-        setFieldValue(name, data.value);
-        setFieldTouched(name, true, false);
-        onChange && onChange(event, data);
-      }}
-      onBlur={onBlur}
-      error={getErrorConfig(meta, errorPrompt, errorConfig)}
-      {...restProps}
-    />
-  );
-};
+}: SelectProps) => (
+  <Field name={name} validate={validate} fast={fast}>
+    {({
+      field: { value },
+      form: { setFieldValue, setFieldTouched },
+      meta,
+    }: FormikFieldProps) => (
+      <FormField
+        control={_Select}
+        name={name}
+        options={options}
+        value={value}
+        onChange={(
+          event: React.SyntheticEvent<HTMLElement, Event>,
+          data: DropdownProps,
+        ) => {
+          setFieldValue(name, data.value);
+          setFieldTouched(name, true, false);
+          _onChange && _onChange(event, data);
+        }}
+        onBlur={onBlur}
+        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        {...restProps}
+      />
+    )}
+  </Field>
+);
 
 export default Select;

@@ -1,13 +1,14 @@
 import React, { forwardRef, Ref } from 'react';
-import { useField, useFormikContext } from 'formik';
+import { FieldProps as FormikFieldProps } from 'formik';
 import {
-  FormInput,
+  FormField,
   Input as _Input,
+  InputOnChangeData,
   InputProps as _InputProps,
 } from 'semantic-ui-react';
-import { FieldHookConfig } from 'formik/dist/Field';
 import { FieldErrorProps, FieldProps } from './types';
 import { getErrorConfig } from './utils';
+import Field from './Field';
 
 export type InputProps = FieldProps & _InputProps & FieldErrorProps;
 
@@ -15,33 +16,35 @@ const Input = (
   {
     name,
     validate,
-    onChange,
+    fast,
+    onChange: _onChange,
     errorPrompt,
     errorConfig,
     ...restProps
   }: InputProps,
   ref: Ref<_Input>,
 ) => {
-  const { handleBlur } = useFormikContext();
-  const config: FieldHookConfig<InputProps> = {
-    name: name,
-    validate: validate,
-  };
-  const [field, meta] = useField(config);
-
   return (
-    <FormInput
-      ref={ref}
-      name={name}
-      value={field.value}
-      onChange={(event, data) => {
-        field.onChange(event);
-        onChange && onChange(event, data);
-      }}
-      onBlur={handleBlur}
-      error={getErrorConfig(meta, errorPrompt, errorConfig)}
-      {...restProps}
-    />
+    <Field name={name} validate={validate} fast={fast}>
+      {({ field: { value, onChange, onBlur }, meta }: FormikFieldProps) => (
+        <FormField
+          control={_Input}
+          ref={ref}
+          name={name}
+          value={value}
+          onChange={(
+            event: React.ChangeEvent<HTMLInputElement>,
+            data: InputOnChangeData,
+          ) => {
+            onChange(event);
+            _onChange && _onChange(event, data);
+          }}
+          onBlur={onBlur}
+          error={getErrorConfig(meta, errorPrompt, errorConfig)}
+          {...restProps}
+        />
+      )}
+    </Field>
   );
 };
 
