@@ -1,43 +1,52 @@
 import React from 'react';
 import { FieldErrorProps, FieldProps } from './types';
-import { FormRadio, RadioProps as _RadioProps } from 'semantic-ui-react';
-import { FieldHookConfig, useField, useFormikContext } from 'formik';
+import {
+  CheckboxProps,
+  FormField,
+  Radio as _Radio,
+  RadioProps as _RadioProps,
+} from 'semantic-ui-react';
+import { FieldProps as FormikFieldProps } from 'formik';
 import { getErrorConfig } from './utils';
+import Field from './Field';
 
 export type RadioProps = FieldProps & _RadioProps & FieldErrorProps;
 
 const Radio = ({
   name,
   validate,
-  value,
-  onChange,
+  fast,
+  value: _value,
+  onChange: _onChange,
   errorPrompt,
   errorConfig,
   ...restProps
-}: RadioProps) => {
-  const config: FieldHookConfig<RadioProps> = {
-    name: name,
-    validate: validate,
-  };
-  const { setFieldValue, setFieldTouched, handleBlur } = useFormikContext();
-  const [field, meta] = useField(config);
-  const fieldValue = (field.value as unknown) as string | number;
-
-  return (
-    <FormRadio
-      name={name}
-      checked={fieldValue === value}
-      value={value}
-      onChange={(event, data) => {
-        setFieldValue(name, value);
-        setFieldTouched(name, true, false);
-        onChange && onChange(event, data);
-      }}
-      onBlur={handleBlur}
-      error={getErrorConfig(meta, errorPrompt, errorConfig)}
-      {...restProps}
-    />
-  );
-};
+}: RadioProps) => (
+  <Field name={name} validate={validate} fast={fast}>
+    {({
+      field: { value, onBlur },
+      form: { setFieldValue, setFieldTouched },
+      meta,
+    }: FormikFieldProps) => (
+      <FormField
+        control={_Radio}
+        name={name}
+        checked={value === _value}
+        value={_value}
+        onChange={(
+          event: React.FormEvent<HTMLInputElement>,
+          data: CheckboxProps,
+        ) => {
+          setFieldValue(name, _value);
+          setFieldTouched(name, true, false);
+          _onChange && _onChange(event, data);
+        }}
+        onBlur={onBlur}
+        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        {...restProps}
+      />
+    )}
+  </Field>
+);
 
 export default Radio;

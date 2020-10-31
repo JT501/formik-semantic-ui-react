@@ -3,6 +3,7 @@ import { SemanticCOLORS } from 'semantic-ui-react';
 export interface FieldProps {
   name: string;
   validate?: (value: any) => undefined | string | Promise<any>;
+  fast?: boolean;
 }
 
 export interface FieldErrorProps {
