@@ -16,7 +16,7 @@ export interface CheckboxProps
   name: string;
 }
 
-const Checkbox = ({
+export const Checkbox = ({
   name,
   validate,
   fast,

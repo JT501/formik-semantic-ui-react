@@ -11,7 +11,7 @@ import { FieldProps as FormikFieldProps } from 'formik';
 
 export type TextAreaProps = FieldProps & _TextAreaProps & FieldErrorProps;
 
-const TextArea = (
+export const TextArea = (
   {
     name,
     validate,

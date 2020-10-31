@@ -12,7 +12,7 @@ import Field from './Field';
 
 export type SelectProps = FieldProps & _SelectProps & FieldErrorProps;
 
-const Select = ({
+export const Select = ({
   name,
   value: _value,
   options,

@@ -6,7 +6,7 @@ interface Props {
   disableLoading?: boolean;
 }
 
-const SubmitButton = ({
+export const SubmitButton = ({
   disableLoading,
   loading,
   ...restProps
