@@ -12,7 +12,7 @@ import Field from './Field';
 
 export type InputProps = FieldProps & _InputProps & FieldErrorProps;
 
-const Input = (
+export const Input = (
   {
     name,
     validate,

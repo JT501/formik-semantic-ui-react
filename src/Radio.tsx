@@ -12,7 +12,7 @@ import Field from './Field';
 
 export type RadioProps = FieldProps & _RadioProps & FieldErrorProps;
 
-const Radio = ({
+export const Radio = ({
   name,
   validate,
   fast,
