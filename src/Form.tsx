@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik';
 
 export const Form = (props: FormProps) => {
   const { handleSubmit } = useFormikContext();
-  return <SemanticForm onSubmit={handleSubmit} error={true} {...props} />;
+  return <SemanticForm onSubmit={handleSubmit} {...props} />;
 };
 
 export default Form;
