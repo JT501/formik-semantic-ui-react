@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/JT501/formik-semantic-ui-react/compare/v1.1.0...v1.1.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* remove error prop in Form.tsx ([9d5e34f](https://github.com/JT501/formik-semantic-ui-react/commit/9d5e34f8572afb35baef4137a7b1ba6f23482fbf))
+
 # [1.1.0](https://github.com/JT501/formik-semantic-ui-react/compare/v1.0.1...v1.1.0) (2020-10-31)
 
 
