@@ -44,18 +44,16 @@ const App = () => {
         >
           <Form size="large">
             <Input
+              inputLabel={{ color: 'orange', content: 'email' }}
               name="email"
-              icon="at"
-              iconPosition="left"
               placeholder="Email"
               focus
               fluid
               errorPrompt
             />
             <Input
+              inputLabel={{ color: 'violet', content: 'password' }}
               name="password"
-              icon="key"
-              iconPosition="left"
               type="password"
               placeholder="Password"
               autoComplete="on"
