@@ -1,16 +1,18 @@
 import React, { forwardRef, Ref } from 'react';
-import { FieldProps as FormikFieldProps } from 'formik';
+import { FieldMetaProps, FieldProps as FormikFieldProps } from 'formik';
 import {
   FormField,
   Input as _Input,
   InputOnChangeData,
   InputProps as _InputProps,
+  Label,
 } from 'semantic-ui-react';
 import { FieldErrorProps, FieldProps } from './types';
-import { getErrorConfig } from './utils';
 import Field from './Field';
 
-export type InputProps = FieldProps & _InputProps & FieldErrorProps;
+export interface InputProps extends FieldProps, _InputProps, FieldErrorProps {
+  inputLabel?: string;
+}
 
 export const Input = (
   {
@@ -20,15 +22,42 @@ export const Input = (
     onChange: _onChange,
     errorPrompt,
     errorConfig,
+    label,
+    inputLabel,
     ...restProps
   }: InputProps,
   ref: Ref<_Input>,
 ) => {
+  const errorLabel = (error: string | undefined) => (
+    <Label
+      prompt={errorConfig?.prompt ?? true}
+      basic={errorConfig?.basic}
+      pointing={errorConfig?.pointing ?? true}
+      color={errorConfig?.color}
+      content={error}
+    />
+  );
+
+  const errorLabelBefore = (meta: FieldMetaProps<_Input>) =>
+    errorPrompt &&
+    meta.touched &&
+    meta.error &&
+    (errorConfig?.pointing === 'below' || errorConfig?.pointing === 'right') &&
+    errorLabel(meta.error);
+
+  const errorLabelAfter = (meta: FieldMetaProps<_Input>) =>
+    errorPrompt &&
+    meta.touched &&
+    meta.error &&
+    (errorConfig?.pointing === 'above' ||
+      errorConfig?.pointing === 'left' ||
+      !errorConfig?.pointing) &&
+    errorLabel(meta.error);
+
   return (
     <Field name={name} validate={validate} fast={fast}>
       {({ field: { value, onChange, onBlur }, meta }: FormikFieldProps) => (
         <FormField
-          control={_Input}
           ref={ref}
           name={name}
           value={value}
@@ -40,9 +69,18 @@ export const Input = (
             _onChange && _onChange(event, data);
           }}
           onBlur={onBlur}
-          error={getErrorConfig(meta, errorPrompt, errorConfig)}
-          {...restProps}
-        />
+          error={meta.touched && meta.error}
+        >
+          {label && <Label>{label}</Label>}
+          {errorLabelBefore(meta)}
+          <_Input
+            name={name}
+            label={inputLabel}
+            {...restProps}
+            defaultValue={value}
+          />
+          {errorLabelAfter(meta)}
+        </FormField>
       )}
     </Field>
   );
