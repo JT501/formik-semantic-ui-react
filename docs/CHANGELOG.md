@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/JT501/formik-semantic-ui-react/compare/v1.1.1...v1.2.0) (2020-11-10)
+
+
+### Features
+
+* Added optional `inputLabel` prop for `Input` component. You can now use [inline input label](https://react.semantic-ui.com/elements/input/#variations-labeled) instead of  form field's label. ([6bfd74b](https://github.com/JT501/formik-semantic-ui-react/commit/6bfd74b52defa72af9d5c6a1dbe6d97fa4e17d98))
+
 ## [1.1.1](https://github.com/JT501/formik-semantic-ui-react/compare/v1.1.0...v1.1.1) (2020-11-03)
 
 
