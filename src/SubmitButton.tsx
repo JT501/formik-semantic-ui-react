@@ -6,6 +6,8 @@ interface Props {
   disableLoading?: boolean;
 }
 
+export const SUBMIT_BUTTON_ID = 'formik-semantic-ui-react-submit-button';
+
 export const SubmitButton = ({
   disableLoading,
   loading,
@@ -14,6 +16,7 @@ export const SubmitButton = ({
   const context = useFormikContext();
   return (
     <FormButton
+      id={SUBMIT_BUTTON_ID}
       type="submit"
       loading={
         disableLoading
