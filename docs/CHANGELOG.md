@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/JT501/formik-semantic-ui-react/compare/v1.2.0...v1.2.1) (2020-11-11)
+
+
+### Bug Fixes
+
+* Input `inputLabel` can now accept Semantic Label Shorthand ([d0e1e52](https://github.com/JT501/formik-semantic-ui-react/commit/d0e1e52b20223cfcfc448e0e22fe5e7d262be259))
+
 # [1.2.0](https://github.com/JT501/formik-semantic-ui-react/compare/v1.1.1...v1.2.0) (2020-11-10)
 
 
