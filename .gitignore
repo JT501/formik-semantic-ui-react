@@ -25,5 +25,8 @@ yarn-error.log*
 # IDE
 /.idea
 /.run/
+
+# Example
 /example/dist/
 /example/node_modules/
+/example/yarn.lock

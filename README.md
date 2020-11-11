@@ -83,7 +83,7 @@ yarn add formik-semantic-ui-react
 | Form | [FormProps](https://react.semantic-ui.com/collections/form/) |
 | Field | [FieldProps](#FieldProps) |
 | FormikDebug | CSS Style Props |
-| Input | [FieldProps](#FieldProps) & [InputProps](https://react.semantic-ui.com/elements/input/) & [FieldErrorProps](#FieldErrorProps) |
+| Input | [FieldProps](#FieldProps) & [InputProps](https://react.semantic-ui.com/elements/input/) & [FieldErrorProps](#FieldErrorProps) & `inputLabel` |
 | Radio | [FieldProps](#FieldProps) & [RadioProps](https://react.semantic-ui.com/addons/radio/) & [FieldErrorProps](#FieldErrorProps) |
 | Select | [FieldProps](#FieldProps) & [SelectProps](https://react.semantic-ui.com/addons/select/) & [FieldErrorProps](#FieldErrorProps) |
 | TextArea | [FieldProps](#FieldProps) & [TextAreaProps](https://react.semantic-ui.com/addons/text-area/) & [FieldErrorProps](#FieldErrorProps) |

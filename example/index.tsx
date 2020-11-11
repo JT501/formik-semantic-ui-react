@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Formik } from 'formik';
-import { Form, FormikDebug, Input, SubmitButton } from '../src';
+import { Checkbox, Form, Input, ResetButton, SubmitButton } from '../src';
 import 'semantic-ui-css/semantic.min.css';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -23,6 +23,7 @@ const App = () => {
   const initialValues = {
     email: '',
     password: '',
+    remember: false,
   };
 
   const validationSchema = Yup.object({
@@ -30,6 +31,7 @@ const App = () => {
     password: Yup.string()
       .min(8, 'Must be at least 8 characters')
       .required('Required'),
+    remember: Yup.boolean().required('Required').oneOf([true], 'Required'),
   });
 
   return (
@@ -41,30 +43,36 @@ const App = () => {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => setSubmitting(false), 1000);
           }}
+          onReset={() => console.log('YO')}
         >
           <Form size="large">
             <Input
-              inputLabel={{ color: 'orange', content: 'email' }}
+              id="input-email"
+              inputLabel={{ color: 'orange', children: 'email' }}
               name="email"
               placeholder="Email"
-              focus
               fluid
               errorPrompt
             />
             <Input
+              id="input-password"
               inputLabel={{ color: 'violet', content: 'password' }}
               name="password"
               type="password"
               placeholder="Password"
               autoComplete="on"
-              focus
               fluid
               errorPrompt
             />
-            <SubmitButton primary fluid>
-              Login
-            </SubmitButton>
-            <FormikDebug />
+            <Checkbox
+              id="checkbox-remember"
+              name="remember"
+              label="Remember ?"
+              errorPrompt
+            />
+            <SubmitButton primary fluid content="Login" />
+            <ResetButton secondary fluid content="Reset" />
+            {/*<FormikDebug />*/}
           </Form>
         </Formik>
       </Wrapper>
