@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import {
   FormField,
-  Input as _Input,
+  Input as SInput,
   InputOnChangeData,
   InputProps as _InputProps,
   Label,
@@ -37,7 +37,7 @@ export const Input = (
     inputLabel,
     ...restProps
   }: InputProps,
-  ref: Ref<_Input>,
+  ref: Ref<SInput>,
 ) => {
   const fieldLabelId = (id && label && `${id}-field-label`) || undefined;
   const inputLabelId = (id && inputLabel && `${id}-input-label`) || undefined;
@@ -61,12 +61,12 @@ export const Input = (
     );
   };
 
-  const errorLabelBefore = (meta: FieldMetaProps<_Input>) =>
+  const errorLabelBefore = (meta: FieldMetaProps<SInput>) =>
     (getErrorConfig(meta, errorPrompt)?.pointing === 'below' ||
       getErrorConfig(meta, errorPrompt)?.pointing === 'right') &&
     errorLabel(meta);
 
-  const errorLabelAfter = (meta: FieldMetaProps<_Input>) =>
+  const errorLabelAfter = (meta: FieldMetaProps<SInput>) =>
     (getErrorConfig(meta, errorPrompt)?.pointing === 'above' ||
       getErrorConfig(meta, errorPrompt)?.pointing === 'left') &&
     errorLabel(meta);
@@ -77,7 +77,7 @@ export const Input = (
         <FormField error={meta.touched && !!meta.error}>
           {fieldLabel}
           {errorLabelBefore(meta)}
-          <_Input
+          <SInput
             id={id}
             ref={ref}
             name={name}

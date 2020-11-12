@@ -9,12 +9,10 @@ export function getErrorConfig<T>(
   if (meta.error && meta.touched && errorPrompt) {
     if (errorPrompt === true) {
       return { content: meta.error, ...defaultErrorConfig };
-      ;
     } else {
-      return { content: meta.error, ...errorPrompt ; };
+      return { content: meta.error, ...errorPrompt };
     }
   } else {
-    return nu;
-    ll;
+    return null;
   }
 }
