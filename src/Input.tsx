@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import {
   FormField,
-  Input as _Input,
+  Input as SInput,
   InputOnChangeData,
   InputProps as _InputProps,
   Label,
@@ -18,6 +18,7 @@ import { FieldErrorProps, FieldProps } from './types';
 import Field from './Field';
 import { RESET_BUTTON_ID } from './ResetButton';
 import { SUBMIT_BUTTON_ID } from './SubmitButton';
+import { getErrorConfig } from './utils';
 
 export interface InputProps extends FieldProps, _InputProps, FieldErrorProps {
   inputLabel?: SemanticShorthandItem<LabelProps>;
@@ -32,12 +33,11 @@ export const Input = (
     onChange: _onChange,
     onBlur: _onBlur,
     errorPrompt,
-    errorConfig,
     label,
     inputLabel,
     ...restProps
   }: InputProps,
-  ref: Ref<_Input>,
+  ref: Ref<SInput>,
 ) => {
   const fieldLabelId = (id && label && `${id}-field-label`) || undefined;
   const inputLabelId = (id && inputLabel && `${id}-input-label`) || undefined;
@@ -48,34 +48,28 @@ export const Input = (
     </label>
   );
 
-  const errorLabel = (error: string | undefined) => (
-    <Label
-      id={id ? `${id}-error-message` : undefined}
-      role="alert"
-      aria-atomic
-      content={error}
-      prompt={errorConfig?.prompt ?? true}
-      basic={errorConfig?.basic}
-      pointing={errorConfig?.pointing ?? true}
-      color={errorConfig?.color}
-    />
-  );
+  const errorLabel = (meta: FieldMetaProps<any>) => {
+    const errorConfig = getErrorConfig(meta, errorPrompt);
 
-  const errorLabelBefore = (meta: FieldMetaProps<_Input>) =>
-    errorPrompt &&
-    meta.touched &&
-    meta.error &&
-    (errorConfig?.pointing === 'below' || errorConfig?.pointing === 'right') &&
-    errorLabel(meta.error);
+    return (
+      <Label
+        id={id ? `${id}-error-message` : undefined}
+        {...errorConfig}
+        role="alert"
+        aria-atomic
+      />
+    );
+  };
 
-  const errorLabelAfter = (meta: FieldMetaProps<_Input>) =>
-    errorPrompt &&
-    meta.touched &&
-    meta.error &&
-    (errorConfig?.pointing === 'above' ||
-      errorConfig?.pointing === 'left' ||
-      !errorConfig?.pointing) &&
-    errorLabel(meta.error);
+  const errorLabelBefore = (meta: FieldMetaProps<SInput>) =>
+    (getErrorConfig(meta, errorPrompt)?.pointing === 'below' ||
+      getErrorConfig(meta, errorPrompt)?.pointing === 'right') &&
+    errorLabel(meta);
+
+  const errorLabelAfter = (meta: FieldMetaProps<SInput>) =>
+    (getErrorConfig(meta, errorPrompt)?.pointing === 'above' ||
+      getErrorConfig(meta, errorPrompt)?.pointing === 'left') &&
+    errorLabel(meta);
 
   return (
     <Field name={name} validate={validate} fast={fast}>
@@ -83,7 +77,7 @@ export const Input = (
         <FormField error={meta.touched && !!meta.error}>
           {fieldLabel}
           {errorLabelBefore(meta)}
-          <_Input
+          <SInput
             id={id}
             ref={ref}
             name={name}

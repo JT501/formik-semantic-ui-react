@@ -22,7 +22,6 @@ export const Checkbox = ({
   fast,
   onChange: _onChange,
   errorPrompt,
-  errorConfig,
   ...restProps
 }: CheckboxProps) => (
   <Field name={name} validate={validate} fast={fast}>
@@ -44,7 +43,7 @@ export const Checkbox = ({
           _onChange && _onChange(event, data);
         }}
         onBlur={onBlur}
-        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        error={getErrorConfig(meta, errorPrompt)}
         {...restProps}
       />
     )}
