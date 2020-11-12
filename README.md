@@ -102,19 +102,23 @@ yarn add formik-semantic-ui-react
 | validate | No | `Function` |  | [Formik `validate` property](https://formik.org/docs/api/field#validate) |
 | fast | No | `boolean` | false | Use Formik [FastField](https://formik.org/docs/api/fastfield) |
 
+### inputLabel
+You can use [inline input label](https://react.semantic-ui.com/elements/input/#variations-labeled) instead of field label. 
+
+Just pass `string` or `SemanticShorthandItem<LabelProps>` to `inputLabel`.
+
 ### FieldErrorProps
 | Property | Required | Type | Default | Description |
 | ---- | :----: | :----: | :----: | ---- |
-| errorPrompt | No | `boolean` | false | Prompt [Error Label](https://react.semantic-ui.com/collections/form/#states-field-error) |
-| errorConfig | No | [`ErrorPromptConfig`](#ErrorPromptConfig) | `{ pointing: 'above'}` | Configure Error Label Prompt |
+| errorPrompt | No | `boolean` &#124; [`ErrorPromptConfig`](#ErrorPromptConfig)  | false | Prompt [Error Label](https://react.semantic-ui.com/collections/form/#states-field-error) |
 
-### ErrorPromptConfig
-| Property | Required | Type | Description |
-| ---- | :----: | :----: | ---- |
-| prompt | No | `boolean` | [Formik label's `prompt` property](https://react.semantic-ui.com/elements/label/#types-prompt)  ***PS. To config basic & color, you have to set prompt to false*** |
-| basic | No | `boolean` | [Formik label's `basic` property](https://react.semantic-ui.com/elements/label/#variations-basic) | 
-| color | No | [SemanticCOLORS](https://github.com/Semantic-Org/Semantic-UI-React/blob/c82836802975f99eddfdd78b6b72ab6110bafa4a/src/generic.d.ts#L89) | [Formik label's `color` property](https://react.semantic-ui.com/elements/label/#variations-colored) |
-| pointing | No | `boolean` &#124; 'above' &#124; 'below' &#124; 'left' &#124; 'right' | [Formik label's `pointing` property](https://react.semantic-ui.com/elements/label/#types-pointing) |
+#### ErrorPromptConfig
+| Property | Required | Type | Default | Description |
+| ---- | :----: | :----: | :----: | ---- |
+| prompt | No | `boolean` | true | [Formik label's `prompt` property](https://react.semantic-ui.com/elements/label/#types-prompt)  ***PS. To config basic & color, you have to set prompt to false*** |
+| basic | No | `boolean` | | [Formik label's `basic` property](https://react.semantic-ui.com/elements/label/#variations-basic) | 
+| color | No | | [SemanticCOLORS](https://github.com/Semantic-Org/Semantic-UI-React/blob/c82836802975f99eddfdd78b6b72ab6110bafa4a/src/generic.d.ts#L89) | [Formik label's `color` property](https://react.semantic-ui.com/elements/label/#variations-colored) |
+| pointing | No | `boolean` &#124; 'above' &#124; 'below' &#124; 'left' &#124; 'right' | 'above' | [Formik label's `pointing` property](https://react.semantic-ui.com/elements/label/#types-pointing) |
 
 ## License
 [Apache 2.0](./LICENSE)
