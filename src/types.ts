@@ -7,8 +7,7 @@ export interface FieldProps {
 }
 
 export interface FieldErrorProps {
-  errorPrompt?: boolean;
-  errorConfig?: ErrorPromptConfig;
+  errorPrompt?: boolean | ErrorPromptConfig;
 }
 
 export type ErrorPointing = boolean | 'above' | 'below' | 'left' | 'right';
@@ -22,5 +21,6 @@ export interface ErrorPromptConfig {
 }
 
 export const defaultErrorConfig: ErrorPromptConfig = {
+  prompt: true,
   pointing: 'above',
 };

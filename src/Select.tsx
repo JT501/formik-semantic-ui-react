@@ -21,7 +21,6 @@ export const Select = ({
   onChange: _onChange,
   onBlur,
   errorPrompt,
-  errorConfig,
   ...restProps
 }: SelectProps) => (
   <Field name={name} validate={validate} fast={fast}>
@@ -44,7 +43,7 @@ export const Select = ({
           _onChange && _onChange(event, data);
         }}
         onBlur={onBlur}
-        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        error={getErrorConfig(meta, errorPrompt)}
         {...restProps}
       />
     )}

@@ -19,7 +19,6 @@ export const Radio = ({
   value: _value,
   onChange: _onChange,
   errorPrompt,
-  errorConfig,
   ...restProps
 }: RadioProps) => (
   <Field name={name} validate={validate} fast={fast}>
@@ -42,7 +41,7 @@ export const Radio = ({
           _onChange && _onChange(event, data);
         }}
         onBlur={onBlur}
-        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        error={getErrorConfig(meta, errorPrompt)}
         {...restProps}
       />
     )}

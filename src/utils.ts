@@ -4,14 +4,17 @@ import { FieldMetaProps } from 'formik';
 // Helper to decide error config
 export function getErrorConfig<T>(
   meta: FieldMetaProps<T>,
-  errorPrompt: boolean | undefined,
-  errorConfig: ErrorPromptConfig | undefined,
+  errorPrompt: boolean | ErrorPromptConfig | undefined,
 ) {
-  return meta.error && meta.touched
-    ? errorPrompt
-      ? errorConfig
-        ? { content: meta.error, ...errorConfig }
-        : { content: meta.error, ...defaultErrorConfig }
-      : true
-    : null;
+  if (meta.error && meta.touched && errorPrompt) {
+    if (errorPrompt === true) {
+      return { content: meta.error, ...defaultErrorConfig };
+      ;
+    } else {
+      return { content: meta.error, ...errorPrompt ; };
+    }
+  } else {
+    return nu;
+    ll;
+  }
 }

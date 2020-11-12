@@ -38,7 +38,7 @@ export const TextArea = (
           _onChange && _onChange(event, data);
         }}
         onBlur={onBlur}
-        error={getErrorConfig(meta, errorPrompt, errorConfig)}
+        error={getErrorConfig(meta, errorPrompt)}
         {...restProps}
       />
     )}

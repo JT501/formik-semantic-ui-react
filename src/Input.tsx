@@ -18,6 +18,7 @@ import { FieldErrorProps, FieldProps } from './types';
 import Field from './Field';
 import { RESET_BUTTON_ID } from './ResetButton';
 import { SUBMIT_BUTTON_ID } from './SubmitButton';
+import { getErrorConfig } from './utils';
 
 export interface InputProps extends FieldProps, _InputProps, FieldErrorProps {
   inputLabel?: SemanticShorthandItem<LabelProps>;
@@ -32,7 +33,6 @@ export const Input = (
     onChange: _onChange,
     onBlur: _onBlur,
     errorPrompt,
-    errorConfig,
     label,
     inputLabel,
     ...restProps
@@ -48,34 +48,28 @@ export const Input = (
     </label>
   );
 
-  const errorLabel = (error: string | undefined) => (
-    <Label
-      id={id ? `${id}-error-message` : undefined}
-      role="alert"
-      aria-atomic
-      content={error}
-      prompt={errorConfig?.prompt ?? true}
-      basic={errorConfig?.basic}
-      pointing={errorConfig?.pointing ?? true}
-      color={errorConfig?.color}
-    />
-  );
+  const errorLabel = (meta: FieldMetaProps<any>) => {
+    const errorConfig = getErrorConfig(meta, errorPrompt);
+
+    return (
+      <Label
+        id={id ? `${id}-error-message` : undefined}
+        {...errorConfig}
+        role="alert"
+        aria-atomic
+      />
+    );
+  };
 
   const errorLabelBefore = (meta: FieldMetaProps<_Input>) =>
-    errorPrompt &&
-    meta.touched &&
-    meta.error &&
-    (errorConfig?.pointing === 'below' || errorConfig?.pointing === 'right') &&
-    errorLabel(meta.error);
+    (getErrorConfig(meta, errorPrompt)?.pointing === 'below' ||
+      getErrorConfig(meta, errorPrompt)?.pointing === 'right') &&
+    errorLabel(meta);
 
   const errorLabelAfter = (meta: FieldMetaProps<_Input>) =>
-    errorPrompt &&
-    meta.touched &&
-    meta.error &&
-    (errorConfig?.pointing === 'above' ||
-      errorConfig?.pointing === 'left' ||
-      !errorConfig?.pointing) &&
-    errorLabel(meta.error);
+    (getErrorConfig(meta, errorPrompt)?.pointing === 'above' ||
+      getErrorConfig(meta, errorPrompt)?.pointing === 'left') &&
+    errorLabel(meta);
 
   return (
     <Field name={name} validate={validate} fast={fast}>
