@@ -8,6 +8,8 @@ import { FieldErrorProps, FieldProps } from './types';
 import { getErrorConfig } from './utils';
 import Field from './Field';
 import { FieldProps as FormikFieldProps } from 'formik';
+import { RESET_BUTTON_ID } from './ResetButton';
+import { SUBMIT_BUTTON_ID } from './SubmitButton';
 
 export type TextAreaProps = FieldProps & _TextAreaProps & FieldErrorProps;
 
@@ -37,7 +39,21 @@ export const TextArea = (
           onChange(event);
           _onChange && _onChange(event, data);
         }}
-        onBlur={onBlur}
+        onBlur={(event: FocusEvent) => {
+          if (event.relatedTarget instanceof Element) {
+            /*
+              Skip validation onBlur when reset / submit button is clicked or
+              It will block reset / submit button onClick event
+            */
+            if (
+              event.relatedTarget.id === RESET_BUTTON_ID ||
+              event.relatedTarget.id === SUBMIT_BUTTON_ID
+            ) {
+              return;
+            }
+          }
+          onBlur(event);
+        }}
         error={getErrorConfig(meta, errorPrompt)}
         {...restProps}
       />
