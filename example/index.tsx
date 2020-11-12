@@ -68,7 +68,7 @@ const App = () => {
               id="checkbox-remember"
               name="remember"
               label="Remember ?"
-              errorPrompt
+              errorPrompt={{ pointing: 'left' }}
             />
             <SubmitButton primary fluid content="Login" />
             <ResetButton secondary fluid content="Reset" />
