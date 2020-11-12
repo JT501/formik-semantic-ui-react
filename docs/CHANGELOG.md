@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/JT501/formik-semantic-ui-react/compare/v1.2.1...v2.0.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **Input:** CI Building Warning ([e6bf808](https://github.com/JT501/formik-semantic-ui-react/commit/e6bf808df9b36a36d15b8770dfdeeb8876399323))
+* **TextArea:** `OnBlur` event block Reset / Submit Button's `onClick` events ([36c25b6](https://github.com/JT501/formik-semantic-ui-react/commit/36c25b6c385d1bf7fefa450788dca5e76e34a387))
+
+
+### Code Refactoring
+
+* Combine props `errorPrompt` & `errorConfig` ([fe5b1a6](https://github.com/JT501/formik-semantic-ui-react/commit/fe5b1a68e065a7ddcbc421a3239990a4ebd9e52b))
+
+
+### BREAKING CHANGES
+
+* Remove prop `errorConfig`
+
 ## [1.2.1](https://github.com/JT501/formik-semantic-ui-react/compare/v1.2.0...v1.2.1) (2020-11-11)
 
 
